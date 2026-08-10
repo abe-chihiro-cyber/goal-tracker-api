@@ -11,19 +11,64 @@ public class CreateGoalRequest {
     @NotBlank
     private String title;
 
+    private String memo;
+
     @Min(1)
     private int target;
+
+    @NotBlank
+    private String unit;
+
     private int current;
 
     @NotNull
     private LocalDate deadline;
 
+    @NotNull
+    private Long userId;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getMemo() {
+        return memo;
+    }
+
+    public int getTarget() {
+        return target;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public int getCurrent() {
+        return current;
+    }
+
+    public LocalDate getDeadline() {
+        return deadline;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
     public void setTitle(String title) {
         this.title = title;
     }
 
+    public void setMemo(String memo) {
+        this.memo = memo;
+    }
+
     public void setTarget(int target) {
         this.target = target;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
     public void setCurrent(int current) {
@@ -34,20 +79,8 @@ public class CreateGoalRequest {
         this.deadline = deadline;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public int getTarget() {
-        return target;
-    }
-
-    public int getCurrent() {
-        return current;
-    }
-
-    public LocalDate getDeadline() {
-        return deadline;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public CreateGoalRequest() {

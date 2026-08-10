@@ -32,7 +32,7 @@ public class Goal {
     public Goal() {
     }
 
-    public Goal(Long id, String title, String memo, int target, String unit, int current, LocalDate deadline) {
+    public Goal(Long id, String title, String memo, int target, String unit, int current, LocalDate deadline, User user) {
         this.id = id;
         this.title = title;
         this.memo = memo;
@@ -40,6 +40,7 @@ public class Goal {
         this.unit = unit;
         this.current = current;
         this.deadline = deadline;
+        this.user = user;
     }
 
     public Long getId() {

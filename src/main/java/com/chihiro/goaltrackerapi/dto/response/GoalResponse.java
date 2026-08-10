@@ -6,7 +6,9 @@ public class GoalResponse {
 
     private Long id;
     private String title;
+    private String memo;
     private int target;
+    private String unit;
     private int current;
     private LocalDate deadline;
 
@@ -30,6 +32,14 @@ public class GoalResponse {
         this.deadline = deadline;
     }
 
+    public void setMemo(String memo) {
+        this.memo = memo;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
     public Long getId() {
         return id;
     }
@@ -48,6 +58,14 @@ public class GoalResponse {
 
     public LocalDate getDeadline() {
         return deadline;
+    }
+
+    public String getMemo() {
+        return memo;
+    }
+
+    public String getUnit() {
+        return unit;
     }
 
     public GoalResponse() {

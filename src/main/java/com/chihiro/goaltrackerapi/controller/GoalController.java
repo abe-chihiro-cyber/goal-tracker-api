@@ -34,19 +34,19 @@ public class GoalController {
 
     // 全件Get
     @GetMapping("/goal")
-    public List<Goal> getGoals() {
+    public List<GoalResponse> getGoals() {
         return service.getGoals();
     }
 
     // 1件Get
     @GetMapping("/goal/{id}")
-    public Goal getGoal(@PathVariable Long id) {
+    public GoalResponse getGoal(@PathVariable Long id) {
         return service.getGoal(id);
     }
 
     // 編集
     @PutMapping("/goal/{id}")
-    public Goal put(@PathVariable Long id, @RequestBody Goal goal) {
+    public GoalResponse put(@PathVariable Long id, @RequestBody Goal goal) {
         return service.putGoal(id, goal);
     }
 
