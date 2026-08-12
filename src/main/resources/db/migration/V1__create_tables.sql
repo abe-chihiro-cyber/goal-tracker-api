@@ -15,5 +15,9 @@ CREATE TABLE goals (
     unit VARCHAR(255) NOT NULL,
     current INT NOT NULL,
     deadline date,
-    FOREIGN KEY (user_id) REFERENCES  users(id)
+
+    CONSTRAINT fk_goals_user
+        FOREIGN KEY (user_id)
+        REFERENCES users(id)
+        ON DELETE CASCADE
 );

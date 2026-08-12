@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.chihiro.goaltrackerapi.dto.request.CreateGoalRequest;
+import com.chihiro.goaltrackerapi.dto.request.UpdateGoalRequest;
 import com.chihiro.goaltrackerapi.dto.response.GoalResponse;
 import com.chihiro.goaltrackerapi.entity.Goal;
 import com.chihiro.goaltrackerapi.service.GoalService;
@@ -46,7 +47,7 @@ public class GoalController {
 
     // 編集
     @PutMapping("/goal/{id}")
-    public GoalResponse put(@PathVariable Long id, @RequestBody Goal goal) {
+    public GoalResponse put(@PathVariable Long id, @RequestBody UpdateGoalRequest goal) {
         return service.putGoal(id, goal);
     }
 

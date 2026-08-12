@@ -1,0 +1,5 @@
+ALTER TABLE users
+    MODIFY name VARCHAR(255) NOT NULL,
+    MODIFY email VARCHAR(255) NOT NULL,
+    MODIFY password VARCHAR(255) NOT NULL,
+    ADD CONSTRAINT uk_users_email UNIQUE (email);

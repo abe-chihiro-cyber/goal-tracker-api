@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.chihiro.goaltrackerapi.entity.User;
 import com.chihiro.goaltrackerapi.repository.UserRepository;
 import com.chihiro.goaltrackerapi.dto.request.CreateGoalRequest;
+import com.chihiro.goaltrackerapi.dto.request.UpdateGoalRequest;
 import com.chihiro.goaltrackerapi.dto.response.GoalResponse;
 import com.chihiro.goaltrackerapi.entity.Goal;
 import com.chihiro.goaltrackerapi.repository.GoalRepository;
@@ -88,7 +89,7 @@ public class GoalService {
     }
 
     // putのレスポンス
-    public GoalResponse putGoal(Long id, Goal goal) {
+    public GoalResponse putGoal(Long id, UpdateGoalRequest goal) {
         Goal existingGoal = repository.findById(id)
                 .orElseThrow();
         
