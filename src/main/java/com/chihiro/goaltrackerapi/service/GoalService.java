@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.chihiro.goaltrackerapi.entity.User;
+import com.chihiro.goaltrackerapi.exception.GoalNotFoundException;
 import com.chihiro.goaltrackerapi.repository.UserRepository;
 import com.chihiro.goaltrackerapi.dto.request.CreateGoalRequest;
 import com.chihiro.goaltrackerapi.dto.request.UpdateGoalRequest;
@@ -73,7 +74,7 @@ public class GoalService {
     public GoalResponse getGoal(Long id) {
         Goal goal = repository
                         .findById(id)
-                        .orElseThrow();// ここのorElseThrowの設定を行って適当なエラーを出す
+                        .orElseThrow(() -> new GoalNotFoundException(id));// ここのorElseThrowの設定を行って適当なエラーを出す
 
         GoalResponse response = new GoalResponse();
 
@@ -91,7 +92,7 @@ public class GoalService {
     // putのレスポンス
     public GoalResponse putGoal(Long id, UpdateGoalRequest goal) {
         Goal existingGoal = repository.findById(id)
-                .orElseThrow();
+                .orElseThrow(() -> new GoalNotFoundException(id));
         
         existingGoal.setTitle(goal.getTitle());
         existingGoal.setMemo(goal.getMemo());
@@ -116,6 +117,8 @@ public class GoalService {
     }
 
     public void deleteGoal(Long id) {
-        repository.deleteById(id);
+        Goal goal = repository.findById(id).orElseThrow(() -> new GoalNotFoundException(id));
+
+        repository.delete(goal);
     }
 }

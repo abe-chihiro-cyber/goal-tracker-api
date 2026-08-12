@@ -9,6 +9,7 @@ import com.chihiro.goaltrackerapi.dto.request.CreateUserRequest;
 import com.chihiro.goaltrackerapi.dto.request.UpdateUserRequest;
 import com.chihiro.goaltrackerapi.dto.response.UserResponse;
 import com.chihiro.goaltrackerapi.entity.User;
+import com.chihiro.goaltrackerapi.exception.UserNotFoundException;
 import com.chihiro.goaltrackerapi.repository.UserRepository;
 
 @Service
@@ -61,7 +62,7 @@ public class UserService {
     }
 
     public UserResponse getUser(Long id) {
-        User user = userRepository.findById(id).orElseThrow();
+        User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id)) ;
 
         UserResponse response = new UserResponse();
 
@@ -74,7 +75,7 @@ public class UserService {
     }
 
     public UserResponse putUser(Long id, UpdateUserRequest request) {
-        User user = userRepository.findById(id).orElseThrow();
+        User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
 
         user.setName(request.getName());
         user.setEmail(request.getEmail());
@@ -94,7 +95,9 @@ public class UserService {
     }
 
     public void deleteUser(Long id) {
-        userRepository.deleteById(id);
+        User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
+
+        userRepository.delete(user);
     }
 
 }

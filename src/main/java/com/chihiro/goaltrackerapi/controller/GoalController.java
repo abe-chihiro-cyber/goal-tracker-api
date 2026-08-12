@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.chihiro.goaltrackerapi.dto.request.CreateGoalRequest;
 import com.chihiro.goaltrackerapi.dto.request.UpdateGoalRequest;
 import com.chihiro.goaltrackerapi.dto.response.GoalResponse;
-import com.chihiro.goaltrackerapi.entity.Goal;
 import com.chihiro.goaltrackerapi.service.GoalService;
 
 import jakarta.validation.Valid;
