@@ -46,7 +46,7 @@ public class GoalController {
 
     // 編集
     @PutMapping("/goal/{id}")
-    public GoalResponse put(@PathVariable Long id, @RequestBody UpdateGoalRequest goal) {
+    public GoalResponse put(@PathVariable Long id, @Valid @RequestBody UpdateGoalRequest goal) {
         return service.putGoal(id, goal);
     }
 
