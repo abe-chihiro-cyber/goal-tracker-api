@@ -40,19 +40,19 @@ public class GoalController {
 
     // 1件Get
     @GetMapping("/goal/{id}")
-    public GoalResponse getGoal(@PathVariable Long id) {
+    public GoalResponse getGoal(@PathVariable("id") Long id) {
         return service.getGoal(id);
     }
 
     // 編集
     @PutMapping("/goal/{id}")
-    public GoalResponse put(@PathVariable Long id, @Valid @RequestBody UpdateGoalRequest goal) {
+    public GoalResponse put(@PathVariable("id") Long id, @Valid @RequestBody UpdateGoalRequest goal) {
         return service.putGoal(id, goal);
     }
 
     // １件削除
     @DeleteMapping("/goal/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable("id") Long id) {
         service.deleteGoal(id);
     }
 }
