@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.chihiro.goaltrackerapi.entity.User;
 import com.chihiro.goaltrackerapi.exception.GoalNotFoundException;
+import com.chihiro.goaltrackerapi.exception.UserNotFoundException;
 import com.chihiro.goaltrackerapi.repository.UserRepository;
 import com.chihiro.goaltrackerapi.dto.request.CreateGoalRequest;
 import com.chihiro.goaltrackerapi.dto.request.UpdateGoalRequest;
@@ -34,7 +35,7 @@ public class GoalService {
         goal.setCurrent(request.getCurrent());
         goal.setDeadline(request.getDeadline());
         
-        User user = userRepository.findById(request.getUserId()).orElseThrow();
+        User user = userRepository.findById(request.getUserId()).orElseThrow(() -> new UserNotFoundException(request.getUserId()));
         goal.setUser(user);
 
         Goal savedGoal = repository.save(goal);
